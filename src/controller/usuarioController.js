@@ -24,8 +24,8 @@ routes.post("/", async (req, res) => {
 });
 
 routes.get("/", async (req, res) => {
-  const usuarioLista = service.getAll();
-
+  const [usuarioLista] = await service.getAll();
+  console.log(usuarioLista)
   if (usuarioLista.length == 0) {
     res.status(204).send({ message: "Nenhum usuário encontrado." });
   }

@@ -6,7 +6,7 @@ async function connect() {
     host: "localhost",
     port: 3306,
     password: "",
-    database: "",
+    database: "Bolt",
     user: "root",
   });
 }
