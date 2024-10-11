@@ -1,0 +1,24 @@
+{
+  "name": "bolt-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pruds52/BackEnd-ProjetoPW3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pruds52/BackEnd-ProjetoPW3/issues"
+  },
+  "homepage": "https://github.com/Pruds52/BackEnd-ProjetoPW3#readme",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "mysql2": "^3.11.3"
+  }
+}
