@@ -6,19 +6,19 @@ const routes = express.Router();
 routes.post("/", async (req, res) => {
   const { nome, email, senha, dataNascimento } = req.body;
 
-  if (nome.length == 0) {
+  if (nome == null) {
     res.status(400).send({ message: "Digite um nome de usuário." });
   }
 
-  if (email.length == 0) {
+  if (email == null) {
     res.status(400).send({ message: "Digite um email." });
   }
 
-  if (senha.length == 0) {
+  if (senha == null) {
     res.status(400).send({ message: "Digite uma senha." });
   }
 
-  if (dataNascimento.length == 0) {
+  if (dataNascimento == null) {
     res.status(400).send({ message: "Digite uma data de nascimento." });
   }
 
