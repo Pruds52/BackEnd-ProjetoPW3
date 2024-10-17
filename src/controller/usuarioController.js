@@ -4,7 +4,7 @@ import service from "../services/usuarioService.js";
 const routes = express.Router();
 
 routes.post("/", async (req, res) => {
-  const { nome, email, senha } = req.body;
+  const { nome, email, senha, dataNascimento } = req.body;
 
   if (nome.length == 0) {
     res.status(400).send({ message: "Digite um nome de usuário." });
@@ -18,7 +18,11 @@ routes.post("/", async (req, res) => {
     res.status(400).send({ message: "Digite uma senha." });
   }
 
-  await service.cadastrarUsuario(nome, email, senha);
+  if (dataNascimento.length == 0) {
+    res.status(400).send({ message: "Digite uma data de nascimento." });
+  }
+
+  await service.cadastrarUsuario(nome, email, senha, dataNascimento);
 
   res.status(201).send({ message: "Usuário cadastrado com sucesso." });
 });

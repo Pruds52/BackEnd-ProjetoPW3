@@ -1,8 +1,8 @@
 import database from "../repository/mysql.js";
 
-async function cadastrarUsuario(nome, email, senha) {
-  const query = "INSERT INTO USUARIO (NOME, EMAIL, SENHA) VALUES (?, ?, ?);";
-  const data = [nome, email, senha];
+async function cadastrarUsuario(nome, email, senha, dataNascimento) {
+  const query = "INSERT INTO USUARIO (Nome, Email, Senha, DataNascimento) VALUES (?, ?, ?, ?);";
+  const data = [nome, email, senha, dataNascimento];
 
   const conn = await database.connect();
   await conn.query(query, data);
