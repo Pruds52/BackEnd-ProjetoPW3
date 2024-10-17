@@ -6,6 +6,7 @@ CREATE TABLE Usuario(
     Nome VARCHAR(45) NOT NULL,
     Email VARCHAR(45) NOT NULL,
     Senha VARCHAR(45) NOT NULL,
+    DataNascimento DATETIME NOT NULL,
     DataInclusao DATETIME DEFAULT NOW() NOT NULL
 );
 
