@@ -5,7 +5,7 @@ async function connect() {
   return await mysql.createConnection({
     host: "localhost",
     port: 3306,
-    password: "",
+    password: "051322",
     database: "Bolt",
     user: "root",
   });
