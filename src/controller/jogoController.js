@@ -29,9 +29,15 @@ routes.get("/:jogoId", async (req, res) => {
   const { jogoId } = req.params
 
   const jogo = await service.getById(jogoId)
-  console.log(jogo[0])
 
   res.status(200).send(jogo[0])
+})
+
+routes.delete("/:jogoId", async (req, res) => {
+  const { jogoId }  = req.params
+  await service.deleteJogo(jogoId)
+  
+  res.status(200).send({message: "Jogo excluído com sucesso."})
 })
 
 export default routes

@@ -20,7 +20,7 @@ async function getAll(){
 }
 
 async function getById(jogoId){
-  const query = "SELECT * FROM JOGO WHERE JogoId = ?"
+  const query = "SELECT * FROM JOGO WHERE JogoId = ?;"
 
   const conn = await database.connect()
   const jogo = await conn.query(query, jogoId)
@@ -29,4 +29,12 @@ async function getById(jogoId){
   return jogo
 }
 
-export default { cadastrarJogo, getAll, getById };
+async function deleteJogo(jogoId){
+  const query = "DELETE FROM JOGO WHERE JogoId = ?;"
+
+  const conn = await database.connect()
+  await conn.query(query, jogoId)
+  conn.end()
+}
+
+export default { cadastrarJogo, getAll, getById, deleteJogo };
