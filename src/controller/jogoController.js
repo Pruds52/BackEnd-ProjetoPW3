@@ -25,4 +25,13 @@ routes.get("/", async (req, res) => {
   res.status(200).send(jogoLista);
 });
 
+routes.get("/:jogoId", async (req, res) => {
+  const { jogoId } = req.params
+
+  const jogo = await service.getById(jogoId)
+  console.log(jogo[0])
+
+  res.status(200).send(jogo[0])
+})
+
 export default routes

@@ -13,10 +13,20 @@ async function getAll(){
   const query = "SELECT * FROM JOGO;"
   
   const conn = await database.connect()
-  const usuarioLista = await conn.query(query)
+  const jogoLista = await conn.query(query)
   conn.end()
   
-  return usuarioLista
+  return jogoLista
 }
 
-export default { cadastrarJogo, getAll };
+async function getById(jogoId){
+  const query = "SELECT * FROM JOGO WHERE JogoId = ?"
+
+  const conn = await database.connect()
+  const jogo = await conn.query(query, jogoId)
+  conn.end()
+
+  return jogo
+}
+
+export default { cadastrarJogo, getAll, getById };
