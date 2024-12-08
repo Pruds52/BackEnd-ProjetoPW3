@@ -15,6 +15,21 @@ routes.post("/", async (req, res) => {
   res.status(201).send({ message: "Jogo cadastrado com sucesso." });
 });
 
+routes.put("/:jogoId", async (req, res) => {
+  const { jogoId } = req.params
+  const { JogoNome, GeneroId, Desenvolvedora, Descricao } = req.body
+  
+  console.log(JogoNome, GeneroId, Desenvolvedora, Descricao, jogoId)
+
+  if (JogoNome == null) {
+    res.status(400).send({ message: "Digite o nome do jogo." });
+  }
+
+  await service.updateJogo(JogoNome, GeneroId, Desenvolvedora, Descricao, jogoId)
+
+  res.status(200).send({ message: "Jogo alterado com sucesso."})
+})
+
 routes.get("/", async (req, res) => {
   const [jogoLista] = await service.getAll();
   console.log(jogoLista)

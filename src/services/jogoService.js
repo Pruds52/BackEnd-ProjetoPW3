@@ -1,7 +1,7 @@
 import database from "../repository/mysql.js";
 
 async function cadastrarJogo(JogoNome, generoId, desenvolvedora, descricao) {
-  const query = "INSERT INTO JOGO (JogoNome, GeneroId, Desenvolvedora, Descricao) VALUES (?, ?, ?, ?);";
+  const query = "INSERT INTO Jogo (JogoNome, GeneroId, Desenvolvedora, Descricao) VALUES (?, ?, ?, ?);";
   const data = [JogoNome, generoId, desenvolvedora, descricao];
 
   const conn = await database.connect();
@@ -10,7 +10,7 @@ async function cadastrarJogo(JogoNome, generoId, desenvolvedora, descricao) {
 }
 
 async function getAll(){
-  const query = "SELECT * FROM JOGO;"
+  const query = "SELECT * FROM Jogo;"
   
   const conn = await database.connect()
   const jogoLista = await conn.query(query)
@@ -20,7 +20,7 @@ async function getAll(){
 }
 
 async function getById(jogoId){
-  const query = "SELECT * FROM JOGO WHERE JogoId = ?;"
+  const query = "SELECT * FROM Jogo WHERE JogoId = ?;"
 
   const conn = await database.connect()
   const jogo = await conn.query(query, jogoId)
@@ -30,11 +30,21 @@ async function getById(jogoId){
 }
 
 async function deleteJogo(jogoId){
-  const query = "DELETE FROM JOGO WHERE JogoId = ?;"
+  const query = "DELETE FROM Jogo WHERE JogoId = ?;"
 
   const conn = await database.connect()
   await conn.query(query, jogoId)
   conn.end()
 }
 
-export default { cadastrarJogo, getAll, getById, deleteJogo };
+async function updateJogo(jogoNome, generoId, desenvolvedora, descricao, jogoId){
+  console.log(jogoNome)
+  const query = "UPDATE Jogo SET JogoNome = ?, GeneroId = ?, Desenvolvedora = ?, Descricao = ? WHERE JogoId = ?"
+  const data = [jogoNome, generoId, desenvolvedora, descricao, jogoId]
+
+  const conn = await database.connect()
+  await conn.query(query, data)
+  conn.end()
+}
+
+export default { cadastrarJogo, getAll, getById, deleteJogo, updateJogo };
